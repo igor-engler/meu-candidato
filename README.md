@@ -2,7 +2,8 @@
 
 ## **Objetivo do aplicativo**
 
-    O intuito do aplicativo Meu Candidato será, possibilitar que o eleitor possa acompanhar candidatos de seu interesse. Exercendo assim seu papel democratico na sociedade, fiscalizando, cobrando e sugerindo propostas de lei.  
+    O intuito do aplicativo Meu Candidato será, possibilitar que o eleitor possa acompanhar candidatos 
+    de seu interesse. Exercendo assim seu papel democratico na sociedade, fiscalizando, cobrando e sugerindo propostas de lei.  
 
 ## **Requisitos do aplicativo**
 
