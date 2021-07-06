@@ -1,4 +1,4 @@
-# **Aplicativo Meu Candidato (Deputados Estaduais)**
+# **Aplicativo Meu Candidato (Deputados Federais)**
 
 ## **Objetivo do aplicativo**
 
