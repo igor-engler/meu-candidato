@@ -88,3 +88,46 @@
 > 5. **`Camadas`**: A aplicação deve ser criada em camadas. Ou seja, a aplicação deve permitir que existam camadas entre o client e o server.  
 >    **Ex.: Balanceamento de cargas, segurança, entre outras.**
 > 6. **`Código sob demanda` _`(Opcional)`_**: O sistema caso permita esta regra, deve permitir que as funcionalidades do cliente possam ser estendidas na forma de scripts/mini aplicativos.
+
+# `Métodos de requisições - HTTP Verbs`
+
+> Os métodos de requisição servem para quando estamos trabalhando com APIs, pois cada método tem sua função bem definida. Os métodos disponíveis são:
+>
+> 1. <span style="color:LightGreen">GET</span> - Leitura de uma informação.
+> 2. <span style="color:LightGreen">POST</span> - Criação de algum objeto/informação dentro da aplicação.
+> 3. <span style="color:LightGreen">PUT</span> - Atualização de informação (vários dados de um objeto/registro).
+> 4. <span style="color:LightGreen">DELETE</span> - Remoção de alguma informação.
+> 5. <span style="color:LightGreen">PATCH</span> - Atualização parcial de uma informação.
+
+# `HTTP Codes`
+
+> `HTTP Codes` são códigos numéricos que são retornados ao _Client_ após uma requisição. Para melhor informações e detalhes [HTTP Codes](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status).
+
+## `Parâmetros das requisições`
+
+> - <span style="color:LightGreen">**Header Params**</span>
+>
+> ```
+>   authority: app.rocketseat.com.br
+>   method: GET
+>   path: /api/journey-nodes
+>   referer: https://app.rockseat.com.br/node
+> ```
+>
+> - <span style="color:LightGreen">**Query Params**</span>
+>
+>   - <a style="color:white">http://enderecoservidor.com.br/v1/users?</a><span style="color:LightBlue">page</span><span style="color:LightCoral">=</span><span style="color:Yellow">2</span><span style="color:Aquamarine">&</span><span style="color:LightBlue">limit</span><span style="color:LightCoral">=</span><span style="color:Yellow">50</span>
+>   - <span style="color:LightBlue">Chave</span>
+>   - <span style="color:Yellow">Valor</span>
+>   - <span style="color:Aquamarine">Separação</span> </br></br>
+>
+> - ### <span style="color:LightGreen">**Route Params**</span>
+>   - <a style="color:white">http://enderecoservidor.com.br/v1/users/</a><span style="color:LightCoral">**{id}**</span>
+> - ### <span style="color:LightGreen">**Body Param**</span>
+>   ```json
+>   {
+>     "name": "Marcos",
+>     "username": "kyhaiu"
+>   }
+>   ```
+>   </br>
