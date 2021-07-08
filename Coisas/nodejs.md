@@ -111,7 +111,7 @@
 >   authority: app.rocketseat.com.br
 >   method: GET
 >   path: /api/journey-nodes
->   referer: https://app.rockseat.com.br/node
+>   referrer: https://app.rockseat.com.br/node
 > ```
 >
 > - <span style="color:LightGreen">**Query Params**</span>
@@ -131,3 +131,75 @@
 >   }
 >   ```
 >   </br>
+
+# `Criando um projeto Node.Js do 0`
+
+## `Estrutura do projeto`
+
+> **1. Criar a pasta do projeto**
+>
+> - Rode o seguinte comando:
+>
+>   ```sh
+>   $ mkdir nomedapasta
+>   ```
+>
+> **2. Criar o arquivo package.json**
+>
+> - O arquivo **`package.json`** é responsável por gerenciar o pacotes/dependências externas. Além de possibilitar a criação de scripts a serem executados através de comandos.
+>
+> - Podemos gera-lo manualmente criando dentro da pasta criada no passo 1, um arquivo com o nome **`package.json`**, e então preenche-lo com os seguintes parâmetros inicialmente:
+>
+>   ```json
+>   {
+>     "name": "nome-do-projeto",
+>     "version": "1.0.0",
+>     "main": "index.js",
+>     "license": "MIT"
+>   }
+>   ```
+>
+> ## `OU` </br>
+>
+> - Podemos rodar o seguinte comando em um terminal/cmd _(para rodar o comando devemos estar dentro da pasta criada no passo 1)_:
+>
+>   ```sh
+>   $ yarn init -y
+>   ```
+>
+>   - Também é possível utilizar o `NPM` </br></br>
+>
+>   ```sh
+>   $ npm init -y
+>   ```
+>
+> ## `Aviso!`
+>
+> - Dependendo de qual gerenciador de pacote que você esteja utilizando ou versão, os comandos poderão ser diferente. Para fins de padronização iremos utilizar a partir daqui somente os comando do **`Yarn`**.
+>
+> **3. Adicionar as dependências (caso seja necessário)**
+>
+> - Toda vez que for necessário adicionar uma dependência no projeto, é necessário rodar o seguinte comando na pasta que se localiza o **`package.json`**.
+>
+>   ```sh
+>   $ yarn add dependencia
+>   ```
+>
+> - `Obs.:` Caso alguma dependência seja apenas de desenvolvimento deverá ser fornecido o paramento **`-D`** após o nome da dependência.
+>
+> - Algumas das dependências mais utilizadas são:
+>   - `express`
+>   - `typescript` **`-D`**
+>   - `...`
+>
+> **4. Criando a pasta `scr`**
+>
+> - A pasta **`src`** é responsável por armazenar os códigos fontes do nosso servidor. E para cria-la, basta estar dentro da pasta criada no passo 1 com o terminal/cmd. E repetir o mesmo comando rodado no passo 1 _(mudando somente o nome da pasta para src)_.
+>
+>   ```sh
+>   $ mkdir src
+>   ```
+>
+> **5. Criando o arquivo `index.js`**
+>
+> - O arquivo index.js é o arquivo principal de uma projeto/pasta, portanto neste caso deve ser criado dentro da pasta **`src`**.
