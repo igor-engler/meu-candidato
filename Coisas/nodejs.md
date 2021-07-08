@@ -141,7 +141,7 @@
 > - Rode o seguinte comando:
 >
 >   ```sh
->   $ mkdir nomedapasta
+>   mkdir nomedapasta
 >   ```
 >
 > **2. Criar o arquivo package.json**
@@ -164,13 +164,13 @@
 > - Podemos rodar o seguinte comando em um terminal/cmd _(para rodar o comando devemos estar dentro da pasta criada no passo 1)_:
 >
 >   ```sh
->   $ yarn init -y
+>   yarn init -y
 >   ```
 >
 >   - Também é possível utilizar o `NPM` </br></br>
 >
 >   ```sh
->   $ npm init -y
+>   npm init -y
 >   ```
 >
 > ## `Aviso!`
@@ -182,7 +182,7 @@
 > - Toda vez que for necessário adicionar uma dependência no projeto, é necessário rodar o seguinte comando na pasta que se localiza o **`package.json`**.
 >
 >   ```sh
->   $ yarn add dependencia
+>   yarn add dependencia
 >   ```
 >
 > - `Obs.:` Caso alguma dependência seja apenas de desenvolvimento deverá ser fornecido o paramento **`-D`** após o nome da dependência.
@@ -197,7 +197,7 @@
 > - A pasta **`src`** é responsável por armazenar os códigos fontes do nosso servidor. E para cria-la, basta estar dentro da pasta criada no passo 1 com o terminal/cmd. E repetir o mesmo comando rodado no passo 1 _(mudando somente o nome da pasta para src)_.
 >
 >   ```sh
->   $ mkdir src
+>   mkdir src
 >   ```
 >
 > **5. Criando o arquivo `index.js`**
