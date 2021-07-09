@@ -214,6 +214,28 @@
 
 > Na comunidade de desenvolvimento de _**Backend**_ utilizando **Node.Js**, existem diversas bibliotecas/frameworks que auxiliam o desenvolvedor na programação.
 >
+> - **`Typescript`**: O typescript é um framework que auxilia no desenvolvimento da aplicação. Habilitando a tipagem de dados. Porém o typescript é uma dependência de desenvolvimento, e portanto na hora de lançar o código para produção, deve-se usar sua função de transpilação para Javascript puro.
+>
+>   **Obs.: O Typescript é um supertype do Javascript, ele só é responsável por adicionar novas features a linguagem. Portanto sempre deve ser instalado como dependência de desenvolvimento usando o -D.**
+>
+>   ```sh
+>   yarn add typescript -D
+>   ```
+>
+>   - E para criar os arquivos de configuração do **`typescript`** basta digitar o seguinte comando:
+>
+>   ```sh
+>   yarn tsc --init
+>   ```
+>
+>   # `Aviso!`
+>
+> - ### **Sempre que estiver utilizando o `Typescript` como dependência de desenvolvimento, deve-se instalar como dependência de desenvolvimento a tipagem dos frameworks/bibliotecas.**
+>
+>   ```sh
+>   yarn add @types/nomedadependencia -D
+>   ```
+>
 > - **`Express`**: O express é um framework minimalista que visa acelerar o processo de criação de rotas dentro de uma aplicação, facilitando a criação de rotas internar e APIs.
 >
 >   ```sh
@@ -226,6 +248,12 @@
 >
 >   ```sh
 >   yarn add nodemon -D
+>   ```
+>
+> - **`UUID`**: O uuid é uma biblioteca que auxilia na criação de identificadores únicos universais. Além disso essa biblioteca possui vários algoritmos que gerenciam essa criação desses **uuid**.
+>
+>   ```sh
+>   yarn add uuid
 >   ```
 
 # `Programas`
