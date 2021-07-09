@@ -119,10 +119,13 @@
 >   - <a style="color:white">http://enderecoservidor.com.br/v1/users?</a><span style="color:LightBlue">page</span><span style="color:LightCoral">=</span><span style="color:Yellow">2</span><span style="color:Aquamarine">&</span><span style="color:LightBlue">limit</span><span style="color:LightCoral">=</span><span style="color:Yellow">50</span>
 >   - <span style="color:LightBlue">Chave</span>
 >   - <span style="color:Yellow">Valor</span>
->   - <span style="color:Aquamarine">Separação</span> </br></br>
+>   - <span style="color:Aquamarine">Separação</span>
+>   - É utilizado quando queremos realizar um sistema de paginação, utilizando como parâmetros de filtros.
+>     </br></br>
 >
 > - ### <span style="color:LightGreen">**Route Params**</span>
 >   - <a style="color:white">http://enderecoservidor.com.br/v1/users/</a><span style="color:LightCoral">**{id}**</span>
+>   - Server para identificar um recurso editar/deletar/buscar.
 > - ### <span style="color:LightGreen">**Body Param**</span>
 >   ```json
 >   {
@@ -130,7 +133,8 @@
 >     "username": "kyhaiu"
 >   }
 >   ```
->   </br>
+>   - Utilizado para inserção/alteração de recursos, na maioria esmagadora dos casos é utilizando o padrão **JSON**, como demonstrado acima.
+>     </br>
 
 # `Criando um projeto Node.Js do 0`
 
@@ -203,3 +207,31 @@
 > **5. Criando o arquivo `index.js`**
 >
 > - O arquivo index.js é o arquivo principal de uma projeto/pasta, portanto neste caso deve ser criado dentro da pasta **`src`**.
+
+# `Dependências de projetos`
+
+## `Depoências que auxiliam o desenvolvimento`
+
+> Na comunidade de desenvolvimento de _**Backend**_ utilizando **Node.Js**, existem diversas bibliotecas/frameworks que auxiliam o desenvolvedor na programação.
+>
+> - **`Express`**: O express é um framework minimalista que visa acelerar o processo de criação de rotas dentro de uma aplicação, facilitando a criação de rotas internar e APIs.
+>
+>   ```sh
+>   yarn add express
+>   ```
+>
+> - **`Nodemon`**: O nodemon é um framework que auxilia o desenvolvedor um backend, pois o principal objetivo deste framework é ficar escutando as mudanças que ocorrem no projeto. E aplica-las no servidor, sem a necessidade de reinicia-lo.
+>
+>   **Obs.: O Nodemon é uma dependência de desenvolvimento, ou seja deve ser instalada com a flag -D sempre.**
+>
+>   ```sh
+>   yarn add nodemon -D
+>   ```
+
+# `Programas`
+
+## `Programas que auxiliam a testar funcionalidades implementadas`
+
+> Durante o desenvolvimento é natural que o programador queira testar o código implementado. Para isso ele tem duas alternativas. Ou ele acaba por testar utilizar um **frontend** minimamente desenvolvido, ou ele opta por utilizar programas que simulam esse **frontend**.
+>
+> **`Insomnia`**: O insomnia é um aplicativo que tem como intuito testar o **backend/APIs** simulando requisições realizadas por um usuário. Para instala-lo basta acessar seu [Site](https://insomnia.rest/download) e baixar a versão mais recente. Quanto a utilização e configurações, basta procurar vídeos/artigos na internet.
