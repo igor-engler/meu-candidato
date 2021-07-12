@@ -34,13 +34,17 @@
 > - O **_Frontend_** ficará responsável por exibir as informações retornadas do **_Backend_**.
 
 ## **Dependências**
-
-    As dependências que o projeto utiliza são:
+>
+> - <a href="https://www.npmjs.com/package/express">Express</a>
+> - <a href="https://www.npmjs.com/package/firebase">Firebase</a> </br>
+> - <a href="https://www.npmjs.com/package/nodemon">Nodemon</a> </br>
+> - <a href="https://www.npmjs.com/package/dotenv">Dotenv</a> </br>
+> - **Mais dependências virão no decorer do projeto** </br></br>
 
 > ### **Dependências de desenvolvimento**
 >
-> - <a href="https://docs.expo.io/">Expo</a>
 > - <a href="https://www.typescriptlang.org/docs/">Typescript</a>
-> - <a href="https://jestjs.io/pt-BR/docs/getting-started">Jest</a>
-> - <a href="https://github.com/wclr/ts-node-dev">ts-node-dev</a> </br></br>
+> - <a href="https://www.npmjs.com/package/ts-node-dev">ts-node-dev</a> </br>
+> - <a href="https://www.npmjs.com/package/@types/express">@types/express</a> </br>
+> - **Mais dependências virão no decorer do projeto** </br>
 > - **Obs.:** Recomendamos que o gerenciador de pacotes utilizado seja o **Yarn**. Porém o desenvolvedor é livre na escolha de **_ferramentas/frameworks_**.
