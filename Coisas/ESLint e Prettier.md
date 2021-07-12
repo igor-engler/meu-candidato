@@ -21,7 +21,7 @@ const aluno = {
 };
 const aluno = {
   nome: "Igor",
-  idade: 23,
+  idade: 23
 };
 ```
 

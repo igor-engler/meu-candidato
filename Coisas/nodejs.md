@@ -204,9 +204,9 @@
 >   mkdir src
 >   ```
 >
-> **5. Criando o arquivo `index.js`**
+> **5. Criando o arquivo `index.js/server.ts`**
 >
-> - O arquivo index.js é o arquivo principal de uma projeto/pasta, portanto neste caso deve ser criado dentro da pasta **`src`**.
+> - O arquivo index.js é o arquivo principal de uma projeto/pasta quando se esta trabalhando com Javascript puro, portanto neste caso deve ser criado dentro da pasta **`src`**. Já o server.ts é criado também na pasta src, porém é criado quando estamos utilizando o typescript no projeto (importante ressaltar que na maioria dos casos quando estamos trabalhando com typescript os arquivos possuem a terminação `.ts`)
 
 # `Dependências de projetos`
 
@@ -235,6 +235,7 @@
 >   ```sh
 >   yarn add @types/nomedadependencia -D
 >   ```
+> - **`ESLint & Prettier`**: o ESLint é uma biblioteca que possibilita a utilização automática de um padrão de código (AirBNB, Google, ...), para saber mais sobre veja o documento [ESLint & Prettier](https://github.com/Kyhaiu/meu-candidato/blob/master/Coisas/ESLint%20e%20Prettier.md), nele você encontrará um tutorial de como instalar e configura-lo para o projeto do backend.
 >
 > - **`Express`**: O express é um framework minimalista que visa acelerar o processo de criação de rotas dentro de uma aplicação, facilitando a criação de rotas internar e APIs.
 >
