@@ -1,21 +1,8 @@
-import { request, Router } from 'express';
-
-import { User } from '../model/User';
+import { Router } from "express";
+import { addUser } from "../Controller/userController";
 
 const UserRoutes = Router();
 
-UserRoutes.post('/', (request, response) => {
-  const { email, name, password } = request.body;
-
-  const user: User = new User();
-
-  Object.assign(user, {
-    email,
-    name,
-    password,
-  });
-
-  return response.status(201).json({ user });
-});
+UserRoutes.post('/users', addUser);
 
 export { UserRoutes };

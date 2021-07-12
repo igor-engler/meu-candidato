@@ -1,11 +1,11 @@
-import express from 'express';
-
-import { UserRoutes } from './routes/users.routes';
+import express from "express";
+import { UserRoutes } from "./Routes/users.routes";
+import { config } from './config';
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/users', UserRoutes);
+app.use("/api", UserRoutes);
 
-app.listen(3333, () => console.log('server is running'));
+app.listen(config.port, () => console.log('App listening on url http://lolcalhost:' + config.port));
