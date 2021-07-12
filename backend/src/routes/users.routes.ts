@@ -3,6 +3,6 @@ import { addUser } from "../Controller/userController";
 
 const UserRoutes = Router();
 
-UserRoutes.post('/users', addUser);
+UserRoutes.post('/', addUser);
 
 export { UserRoutes };

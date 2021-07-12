@@ -16,9 +16,7 @@ const addUser = async (request, response, next) => {
             password,
         });
 
-        const id = user.id;
-
-        await firestore.collection('users').doc().set({ id, email, name, password });
+        await firestore.collection('users').doc().set({ email, name, password });
 
         response.status(200).send('Record saved successfuly');
 
