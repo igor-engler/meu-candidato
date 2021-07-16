@@ -1,7 +1,0 @@
-
-
-class UsersRepository {
-
-};
-
-export { UsersRepository };
