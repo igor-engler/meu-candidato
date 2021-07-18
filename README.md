@@ -46,5 +46,6 @@
 > - <a href="https://www.typescriptlang.org/docs/">Typescript</a>
 > - <a href="https://www.npmjs.com/package/ts-node-dev">ts-node-dev</a> </br>
 > - <a href="https://www.npmjs.com/package/@types/express">@types/express</a> </br>
+> - <a href="https://typedoc.org/api/">Typedoc</a>
 > - **Mais dependências virão no decorer do projeto** </br>
 > - **Obs.:** Recomendamos que o gerenciador de pacotes utilizado seja o **Yarn**. Porém o desenvolvedor é livre na escolha de **_ferramentas/frameworks_**.

@@ -1,23 +1,22 @@
-import { response, Router } from "express";
-import { UsersRepository } from "../Modules/Users/Repositories/UsersRepositories";
-import { CreateUserService } from "../Modules/Users/Services/CreateUserService";
+import { Router } from "express";
+import { createUserController } from "../Modules/Users/UseCases/CreateUser";
+import { listUserController } from "../Modules/Users/UseCases/ListUser";
 
 const UserRoutes = Router();
-const usersRepositories = new UsersRepository();
 
+/**
+ * Arquivo responsável por criar as rotas /users.
+ *
+ * @remarks
+ * Rotas criadas criadas:
+ *  - GET
+ *  - POST
+ */
 UserRoutes.post('/', (request, response) => {
-    const { email, name, password } = request.body;
-
-    const createUserService = new CreateUserService(usersRepositories);
-    createUserService.execute({ email, name, password });
-
-    return response.status(201).send();
+    return createUserController.handle(request, response);
 });
 
 UserRoutes.get('/', (request, response) => {
-    const all = usersRepositories.list();
-
-    return response.status(201).json(all);
+    return listUserController.handle(request, response);
 });
-
 export { UserRoutes };

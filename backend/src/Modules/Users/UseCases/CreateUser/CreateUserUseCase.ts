@@ -1,4 +1,4 @@
-import { IUserRepositories } from "../Repositories/IUserRepositories";
+import { IUserRepository } from "../../Repositories/IUserRepository";
 
 interface IRequest {
     email: string;
@@ -6,8 +6,8 @@ interface IRequest {
     password: string;
 }
 
-class CreateUserService {
-    constructor(private userRepositories: IUserRepositories) { };
+class CreateUserUseCase {
+    constructor(private userRepositories: IUserRepository) { };
 
     execute({ email, name, password }: IRequest) {
         const userExist = this.userRepositories.findByEmail(email);
@@ -20,4 +20,4 @@ class CreateUserService {
     }
 }
 
-export { CreateUserService };
+export { CreateUserUseCase };
