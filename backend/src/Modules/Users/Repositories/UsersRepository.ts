@@ -3,7 +3,10 @@ import { ICreateUserDTO, IUserRepository } from "./IUserRepository";
 
 
 /**
- * Classe responsável por conter a implementação de todos os métodos do {@link User}
+ * Classe responsável por conter a implementação de todos os métodos do {@link IUserRepository}
+ *
+ * @property @private user - Array
+ * @property @private INSTANCE - Objeto que contem a instância da classe {@link UserRepository}
  */
 class UsersRepository implements IUserRepository {
     private user: User[];
@@ -38,6 +41,7 @@ class UsersRepository implements IUserRepository {
      * @param name
      * @param password
      *
+     * @returns Void
      */
     create({ email, name, password }: ICreateUserDTO): void {
         const user = new User();

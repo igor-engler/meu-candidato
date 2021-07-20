@@ -15,6 +15,10 @@ interface ICreateUserDTO {
 
 /**
  * Interface que contem o contrato dos métodos da classe {@link UsersRepository}
+ *
+ * @method findByEmail
+ * @method list
+ * @method create
  */
 interface IUserRepository {
     findByEmail(email: string): User;
