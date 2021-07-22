@@ -1,6 +1,0 @@
-{
-    "entryPoints": [
-        "./backend/src/"
-    ],
-    "out": "docs"
-}

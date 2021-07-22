@@ -1,5 +1,5 @@
-import { User } from "../Models/User";
-import { ICreateUserDTO, IUserRepository } from "./IUserRepository";
+import { User } from "../../Models/User";
+import { ICreateUserDTO, IUserRepository } from "../IUserRepository";
 
 
 /**

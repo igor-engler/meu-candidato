@@ -1,11 +1,16 @@
 import express from "express";
-import { UserRoutes } from "./routes/users.routes";
+import swaggerUi from "swagger-ui-express";
+
+import swaggerFile from "./swagger.json";
+import { router } from "./routes";
 import { config } from './config';
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/users", UserRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+app.use(router);
 
 app.listen(config.port, () => console.log('App listening on url http://lolcalhost:' + config.port));
