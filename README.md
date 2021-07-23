@@ -39,6 +39,7 @@
 > - <a href="https://www.npmjs.com/package/firebase">Firebase</a> </br>
 > - <a href="https://www.npmjs.com/package/nodemon">Nodemon</a> </br>
 > - <a href="https://www.npmjs.com/package/dotenv">Dotenv</a> </br>
+> - <a href="https://www.npmjs.com/package/swagger">Swagger</a> </br>
 > - **Mais dependências virão no decorer do projeto** </br></br>
 
 > ### **Dependências de desenvolvimento**
@@ -46,6 +47,6 @@
 > - <a href="https://www.typescriptlang.org/docs/">Typescript</a>
 > - <a href="https://www.npmjs.com/package/ts-node-dev">ts-node-dev</a> </br>
 > - <a href="https://www.npmjs.com/package/@types/express">@types/express</a> </br>
-> - <a href="https://typedoc.org/api/">Typedoc</a>
+> - <a href="https://www.npmjs.com/package/@types/swagger-ui-express">@types/swagger-ui-express</a> </br>
 > - **Mais dependências virão no decorer do projeto** </br>
 > - **Obs.:** Recomendamos que o gerenciador de pacotes utilizado seja o **Yarn**. Porém o desenvolvedor é livre na escolha de **_ferramentas/frameworks_**.
