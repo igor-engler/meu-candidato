@@ -13,4 +13,4 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(router);
 
-app.listen(config.port, () => console.log('App listening on url http://lolcalhost:' + config.port));
+app.listen(config.port || 8080, () => console.log('App listening on url http://lolcalhost:' + config.port));

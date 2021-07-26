@@ -1,6 +1,6 @@
 import { User } from "../../Models/User";
 import { ICreateUserDTO, IUserRepository } from "../IUserRepository";
-
+import { db } from "../../../../db";
 
 /**
  * Classe responsável por conter a implementação de todos os métodos do {@link IUserRepository}
@@ -45,12 +45,15 @@ class UsersRepository implements IUserRepository {
      */
     create({ email, name, password }: ICreateUserDTO): void {
         const user = new User();
+        const firestore = db.firestore();
 
         Object.assign(user, {
             email,
             name,
             password
         });
+
+        firestore.collection('users').doc().set({ email, name, password });
 
         this.user.push(user);
     };
