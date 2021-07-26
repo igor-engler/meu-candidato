@@ -1,24 +1,32 @@
 import React from 'react';
-import { View, SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import { View, SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 
 import ilustracao from '../assets/ilustracao-conceito.png'
 import colors from '../styles/colors';
 import fonts from '../styles/fonts'
 
-export function Welcome(){
-          return(
+
+export function Welcome() {
+          const navigation = useNavigation()
+
+          function handleStart() {
+                    navigation.navigate('UserIdentification')
+          }
+
+          return (
                     <SafeAreaView style={styles.container}>
                               <View style={styles.wrapper}>
                                         <Text style={styles.title}>
                                                   Acompanhe as {'\n'}
                                                   atividades do seu {'\n'}
                                                   politico eleito de {'\n'}
-                                                  maneira eficiente 
+                                                  maneira eficiente
                                         </Text>
 
-                                        <Image  
-                                                  source={ilustracao} 
+                                        <Image
+                                                  source={ilustracao}
                                                   style={styles.image}
                                                   resizeMode='contain'
                                         />
@@ -28,17 +36,18 @@ export function Welcome(){
                                                   do(s) politico(s) que você elegeu {'\n'}
                                                   ou tem interesse. {'\n'}
                                                   Lembre-se que as eleições não {'\n'}
-                                                  acabam após as votações. 
+                                                  acabam após as votações.
                                         </Text>
 
-                                        <TouchableOpacity 
+                                        <TouchableOpacity
                                                   style={styles.button}>
-                                                            <Feather
-                                                                      name="chevron-right"
-                                                                      style={styles.buttonIcon}
-                                                            />
+                                                  <Feather
+                                                            name="chevron-right"
+                                                            style={styles.buttonIcon}
+                                                            onPress={handleStart}
+                                                  />
                                         </TouchableOpacity>
-                              </View>              
+                              </View>
                     </SafeAreaView>
           )
 }
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
                     paddingHorizontal: 20
           },
           title: {
-                    fontSize:30,
+                    fontSize: 30,
                     fontWeight: 'bold',
                     textAlign: 'center',
                     color: colors.heading,
