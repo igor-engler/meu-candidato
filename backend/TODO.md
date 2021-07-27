@@ -4,7 +4,7 @@
 
 ## **Requisitos do aplicativo**
 
-- `[]` Deve ser possível criar uma conta.
+- `[X]` Deve ser possível criar uma conta.
 - `[]` Deve ser possível realizar login utilizando uma mídia social.
 - `[]` Deve ser possível consultar a lista de deputados.
 - `[]` Deve ser possível adicionar um deputado a uma lista de favoritos.

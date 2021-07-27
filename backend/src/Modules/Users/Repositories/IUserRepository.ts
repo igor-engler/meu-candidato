@@ -16,14 +16,12 @@ interface ICreateUserDTO {
 /**
  * Interface que contem o contrato dos métodos da classe {@link UsersRepository}
  *
- * @method findByEmail
- * @method list
  * @method create
+ * @method findByEmail
  */
 interface IUserRepository {
-    findByEmail(email: string): User;
-    list(): User[];
     create({ email, name, password }: ICreateUserDTO): void;
+    findByEmail(email: string): Promise<User>;
 }
 
 export { IUserRepository, ICreateUserDTO };

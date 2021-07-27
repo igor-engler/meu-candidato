@@ -10,31 +10,31 @@ import { FirstPage } from '../pages/FirstPage'
 const stackRoutes = createStackNavigator();
 
 const AppRoutes: React.FC = () => (
-          <stackRoutes.Navigator
-                    headerMode='none'
-                    screenOptions={{
-                              cardStyle: {
-                                        backgroundColor: colors.white
-                              }
-                    }}>
+    <stackRoutes.Navigator
+        headerMode='none'
+        screenOptions={{
+            cardStyle: {
+                backgroundColor: colors.white
+            }
+        }}>
 
-                    <stackRoutes.Screen
-                              name="Welcome"
-                              component={Welcome}
-                    />
+        <stackRoutes.Screen
+            name="Welcome"
+            component={Welcome}
+        />
 
-                    <stackRoutes.Screen
-                              name="UserIdentification"
-                              component={UserIdentification}
-                    />
+        <stackRoutes.Screen
+            name="UserIdentification"
+            component={UserIdentification}
+        />
 
-                    <stackRoutes.Screen
-                              name="FirstPage"
-                              component={FirstPage}
-                    />
+        <stackRoutes.Screen
+            name="FirstPage"
+            component={FirstPage}
+        />
 
 
-          </stackRoutes.Navigator>
+    </stackRoutes.Navigator>
 )
 
 export default AppRoutes

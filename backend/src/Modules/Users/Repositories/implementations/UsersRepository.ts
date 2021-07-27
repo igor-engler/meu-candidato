@@ -9,13 +9,9 @@ import { db } from "../../../../db";
  * @property @private INSTANCE - Objeto que contem a instância da classe {@link UserRepository}
  */
 class UsersRepository implements IUserRepository {
-    private user: User[];
+    private user: User;
 
     private static INSTANCE: UsersRepository;
-
-    private constructor() {
-        this.user = [];
-    }
 
     /**
      * Verifica e retorna se existe uma instância do UserRepository. 
@@ -45,7 +41,7 @@ class UsersRepository implements IUserRepository {
      */
     create({ email, name, password }: ICreateUserDTO): void {
         const user = new User();
-        const firestore = db.firestore();
+        const firestore = db.firestore().collection('users');
 
         Object.assign(user, {
             email,
@@ -53,18 +49,12 @@ class UsersRepository implements IUserRepository {
             password
         });
 
-        firestore.collection('users').doc().set({ email, name, password });
-
-        this.user.push(user);
-    };
-
-    /**
-     * Função que retorna uma lista de usuário cadastrados no sistema.
-     *
-     * @returns Retorna uma array de usuários.
-     */
-    list(): User[] {
-        return this.user;
+        firestore.doc().set({
+            email: user.email,
+            name: user.name,
+            password: user.password,
+            list_favorites: []
+        });
     };
 
     /**
@@ -76,8 +66,13 @@ class UsersRepository implements IUserRepository {
      * @param email
      * @returns Retorna um objeto {@link User} que corresponde ao email passado.
      */
-    findByEmail(email: String): User {
-        const user = this.user.find(user => user.email === email);
+    async findByEmail(email: String): Promise<User> {
+        const user = new User();
+        const firestore = db.firestore().collection('users');
+
+        const userDocumment = await firestore.where('email', '==', email).get();
+
+        console.log(userDocumment.docs[0].data());
 
         return user;
     }

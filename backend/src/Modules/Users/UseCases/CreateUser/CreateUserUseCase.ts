@@ -6,6 +6,7 @@ import { IUserRepository } from "../../Repositories/IUserRepository";
  * @property email - String.
  * @property name - String.
  * @property password - String.
+ * @property list_favorites - Array of Numbers
  */
 interface IRequest {
     email: string;
@@ -36,7 +37,8 @@ class CreateUserUseCase {
         const userExist = this.userRepositories.findByEmail(email);
 
         if (userExist) {
-            throw new Error("User Already Exists!");
+            //throw new Error("User Already Exists!");
+            console.log("erro")
         }
 
         this.userRepositories.create({ email, name, password });
