@@ -33,12 +33,11 @@ class CreateUserUseCase {
      * 
      * @returns Void
      */
-    execute({ email, name, password }: IRequest): void {
-        const userExist = this.userRepositories.findByEmail(email);
+    async execute({ email, name, password }: IRequest): Promise<void> {
+        const userExist = await this.userRepositories.findByEmail(email);
 
         if (userExist) {
-            //throw new Error("User Already Exists!");
-            console.log("erro")
+            throw new Error("User Already Exists!");
         }
 
         this.userRepositories.create({ email, name, password });

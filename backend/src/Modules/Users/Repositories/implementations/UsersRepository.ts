@@ -9,7 +9,7 @@ import { db } from "../../../../db";
  * @property @private INSTANCE - Objeto que contem a instância da classe {@link UserRepository}
  */
 class UsersRepository implements IUserRepository {
-    private user: User;
+    private firestore = db.firestore().collection('users');
 
     private static INSTANCE: UsersRepository;
 
@@ -41,7 +41,6 @@ class UsersRepository implements IUserRepository {
      */
     create({ email, name, password }: ICreateUserDTO): void {
         const user = new User();
-        const firestore = db.firestore().collection('users');
 
         Object.assign(user, {
             email,
@@ -49,7 +48,7 @@ class UsersRepository implements IUserRepository {
             password
         });
 
-        firestore.doc().set({
+        this.firestore.doc().set({
             email: user.email,
             name: user.name,
             password: user.password,
@@ -58,23 +57,23 @@ class UsersRepository implements IUserRepository {
     };
 
     /**
-     * Função que busca e retorna um email de usuário cadastrado.
+     * Função que verifica se um email está cadastrado no sistema.
      *
      * @remarks
      * Função utilizada para verificar se já existe um usuário com aquele email cadastrado no sistema. 
      *
      * @param email
-     * @returns Retorna um objeto {@link User} que corresponde ao email passado.
+     * @returns Retorna um Boolean, dizendo se existe um usuário com aquele email.
      */
-    async findByEmail(email: String): Promise<User> {
-        const user = new User();
-        const firestore = db.firestore().collection('users');
+    async findByEmail(email: string): Promise<boolean> {
+        const userDocument = await this.firestore.where('email', '==', email).get();
 
-        const userDocumment = await firestore.where('email', '==', email).get();
+        //Se a querry está diferente de vazia,e então existe usuário cadastrado.
+        if (!userDocument.empty) {
+            return true;
+        }
 
-        console.log(userDocumment.docs[0].data());
-
-        return user;
+        return false;
     }
 };
 
