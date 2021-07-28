@@ -68,7 +68,7 @@ class UsersRepository implements IUserRepository {
     async findByEmail(email: string): Promise<boolean> {
         const userDocument = await this.firestore.where('email', '==', email).get();
 
-        //Se a querry está diferente de vazia,e então existe usuário cadastrado.
+        //Se a query está diferente de vazia,e então existe usuário cadastrado.
         if (!userDocument.empty) {
             return true;
         }

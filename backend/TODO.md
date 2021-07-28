@@ -20,6 +20,6 @@
 
 ## `Regas de negócios`
 
-- `[]` Não deve ser possível cadastrar uma conta com mais de um e-mail.
+- `[X]` Não deve ser possível cadastrar uma conta com mais de um e-mail.
 - `[]` Não deve ser possível excluir uma conta inexistente.
 - `[]` Só deve ser possível enviar e-mail para deputados que estejam em execício do mandato.
