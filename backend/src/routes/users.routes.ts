@@ -8,7 +8,6 @@ const UserRoutes = Router();
  *
  * @remarks
  * Rotas criadas criadas:
- *  - GET
  *  - POST
  */
 UserRoutes.post('/', (request, response) => {

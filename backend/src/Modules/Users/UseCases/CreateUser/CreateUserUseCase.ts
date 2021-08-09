@@ -1,4 +1,5 @@
 import { IUserRepository } from "../../Repositories/IUserRepository";
+import { hash } from "bcrypt";
 
 /**
  * Interface que contem os parâmetros do Request.
@@ -34,13 +35,15 @@ class CreateUserUseCase {
      * @returns Void
      */
     async execute({ email, name, password }: IRequest): Promise<void> {
-        const userExist = await this.userRepositories.findByEmail(email);
+        const userAlreadyExist = await this.userRepositories.findByEmail(email);
 
-        if (userExist) {
+        if (userAlreadyExist) {
             throw new Error("User Already Exists!");
         }
 
-        this.userRepositories.create({ email, name, password });
+        const passwordHash = await hash(password, 8)
+
+        await this.userRepositories.create({ email, name, password: passwordHash });
     }
 }
 

@@ -21,7 +21,7 @@ interface ICreateUserDTO {
  */
 interface IUserRepository {
     create({ email, name, password }: ICreateUserDTO): void;
-    findByEmail(email: string): Promise<boolean>;
+    findByEmail(email: string): Promise<User>;
 }
 
 export { IUserRepository, ICreateUserDTO };

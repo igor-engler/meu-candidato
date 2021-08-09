@@ -65,15 +65,24 @@ class UsersRepository implements IUserRepository {
      * @param email
      * @returns Retorna um Boolean, dizendo se existe um usuário com aquele email.
      */
-    async findByEmail(email: string): Promise<boolean> {
+    async findByEmail(email: string): Promise<User> {
         const userDocument = await this.firestore.where('email', '==', email).get();
 
         //Se a query está diferente de vazia,e então existe usuário cadastrado.
         if (!userDocument.empty) {
-            return true;
+            const dataRetrieved = userDocument.docs[0].data()
+            const user = new User();
+
+            Object.assign(user, {
+                email: dataRetrieved.email,
+                name: dataRetrieved.name,
+                password: dataRetrieved.password
+            })
+
+            return user;
         }
 
-        return false;
+        return undefined;
     }
 };
 

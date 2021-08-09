@@ -20,7 +20,7 @@ class CreateUserController {
      * @param response - Response
      * @returns Retorna o status da operação.
      */
-    async handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response): Promise<Response> {
 
         const { email, name, password } = request.body;
 
