@@ -1,7 +1,6 @@
 import React from "react"
 import { TouchableOpacity, StyleSheet, SafeAreaView, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 
-import { Button } from '../components/Button'
 
 import colors from "../styles/colors"
 import fonts from "../styles/fonts"
