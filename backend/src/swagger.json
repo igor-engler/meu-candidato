@@ -15,31 +15,13 @@
                     "Users"
                 ],
                 "summary": "Cria um usuário",
-                "description": "Cria um novo usuário",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "password": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "email": "teste@teste.com.br",
-                                    "name": "Fulano Da Silva Sauro",
-                                    "password": "12345678"
-                                }
-                            }
+                            "$ref": "#/components/schemas/Users"
                         }
-                    }
+                    },
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -49,37 +31,48 @@
                         "description": "Usuário já existe"
                     }
                 }
-            },
-            "get": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Lista todos os usuários.",
-                "description": "Lista todos os usuário cadastrados no sistema.",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "itens": {
-                                        "type": "object",
-                                        "properties": {
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "password": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Users": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "list_favorites": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
                         }
+                    }
+                },
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        }
+                    },
+                    "example": {
+                        "email": "teste@teste.com.br",
+                        "name": "Fulano Da Silva Sauro",
+                        "password": "12345678"
                     }
                 }
             }

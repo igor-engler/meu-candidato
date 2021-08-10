@@ -9,13 +9,9 @@ import { db } from "../../../../db";
  * @property @private INSTANCE - Objeto que contem a instância da classe {@link UserRepository}
  */
 class UsersRepository implements IUserRepository {
-    private user: User[];
+    private firestore = db.firestore().collection('users');
 
     private static INSTANCE: UsersRepository;
-
-    private constructor() {
-        this.user = [];
-    }
 
     /**
      * Verifica e retorna se existe uma instância do UserRepository. 
@@ -45,7 +41,6 @@ class UsersRepository implements IUserRepository {
      */
     create({ email, name, password }: ICreateUserDTO): void {
         const user = new User();
-        const firestore = db.firestore();
 
         Object.assign(user, {
             email,
@@ -53,33 +48,41 @@ class UsersRepository implements IUserRepository {
             password
         });
 
-        firestore.collection('users').doc().set({ email, name, password });
-
-        this.user.push(user);
+        this.firestore.doc().set({
+            email: user.email,
+            name: user.name,
+            password: user.password,
+            list_favorites: []
+        });
     };
 
     /**
-     * Função que retorna uma lista de usuário cadastrados no sistema.
-     *
-     * @returns Retorna uma array de usuários.
-     */
-    list(): User[] {
-        return this.user;
-    };
-
-    /**
-     * Função que busca e retorna um email de usuário cadastrado.
+     * Função que verifica se um email está cadastrado no sistema.
      *
      * @remarks
      * Função utilizada para verificar se já existe um usuário com aquele email cadastrado no sistema. 
      *
      * @param email
-     * @returns Retorna um objeto {@link User} que corresponde ao email passado.
+     * @returns Retorna um Boolean, dizendo se existe um usuário com aquele email.
      */
-    findByEmail(email: String): User {
-        const user = this.user.find(user => user.email === email);
+    async findByEmail(email: string): Promise<User> {
+        const userDocument = await this.firestore.where('email', '==', email).get();
 
-        return user;
+        //Se a query está diferente de vazia,e então existe usuário cadastrado.
+        if (!userDocument.empty) {
+            const dataRetrieved = userDocument.docs[0].data()
+            const user = new User();
+
+            Object.assign(user, {
+                email: dataRetrieved.email,
+                name: dataRetrieved.name,
+                password: dataRetrieved.password
+            })
+
+            return user;
+        }
+
+        return undefined;
     }
 };
 

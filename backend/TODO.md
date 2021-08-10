@@ -4,7 +4,7 @@
 
 ## **Requisitos do aplicativo**
 
-- `[]` Deve ser possível criar uma conta.
+- `[X]` Deve ser possível criar uma conta.
 - `[]` Deve ser possível realizar login utilizando uma mídia social.
 - `[]` Deve ser possível consultar a lista de deputados.
 - `[]` Deve ser possível adicionar um deputado a uma lista de favoritos.
@@ -20,6 +20,6 @@
 
 ## `Regas de negócios`
 
-- `[]` Não deve ser possível cadastrar uma conta com mais de um e-mail.
+- `[X]` Não deve ser possível cadastrar uma conta com mais de um e-mail.
 - `[]` Não deve ser possível excluir uma conta inexistente.
 - `[]` Só deve ser possível enviar e-mail para deputados que estejam em execício do mandato.

@@ -20,13 +20,17 @@ class CreateUserController {
      * @param response - Response
      * @returns Retorna o status da operação.
      */
-    handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response): Promise<Response> {
 
         const { email, name, password } = request.body;
 
-        this.createUserUseCase.execute({ email, name, password });
+        try {
+            await this.createUserUseCase.execute({ email, name, password });
+        } catch (error) {
+            return response.status(500).json({ "Error": "Erro: Usuário já cadastrado" });
+        }
 
-        return response.status(201).send();
+        return response.status(201).json({ "Sucess": "Usuário cadastrado com sucesso" });
     };
 };
 
