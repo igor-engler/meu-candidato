@@ -1,5 +1,7 @@
-import { IUserRepository } from "../../Repositories/IUserRepository";
 import { hash } from "bcrypt";
+
+import { AppError } from "../../../../Errors/AppError";
+import { IUserRepository } from "../../Repositories/IUserRepository";
 
 /**
  * Interface que contem os parâmetros do Request.
@@ -38,7 +40,7 @@ class CreateUserUseCase {
         const userAlreadyExist = await this.userRepositories.findByEmail(email);
 
         if (userAlreadyExist) {
-            throw new Error("User Already Exists!");
+            throw new AppError("Usuário já cadastrado!");
         }
 
         const passwordHash = await hash(password, 8)
