@@ -49,7 +49,7 @@ describe("Authenticate User", () => {
         }).rejects.toBeInstanceOf(AppError);
     });
 
-    it("Should not be able to authenticate an User with wrong email", async () => {
+    it("Should not be able to authenticate a nonexisting User", async () => {
         const user: ICreateUserDTO = {
             email: "wrongemail@teste.com.br",
             name: "teste",
@@ -57,23 +57,6 @@ describe("Authenticate User", () => {
         };
 
         // The correct email should be "teste@teste.com.br"
-        await expect(async () => {
-            await authenticateUserUseCase.execute({
-                email: user.email,
-                password: user.password
-            });
-        }).rejects.toBeInstanceOf(AppError);
-    });
-
-    it("Should not be able to authenticate an User with worng email and password", async () => {
-        const user: ICreateUserDTO = {
-            email: "wrongemail@teste.com.br",
-            name: "teste",
-            password: "wrongpass"
-        };
-
-        // The correct email should be "teste@teste.com.br"
-        // The correct password should be "123456789"
         await expect(async () => {
             await authenticateUserUseCase.execute({
                 email: user.email,
