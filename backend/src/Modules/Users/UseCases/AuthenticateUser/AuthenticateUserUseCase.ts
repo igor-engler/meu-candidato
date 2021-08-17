@@ -1,7 +1,7 @@
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
-import { AppError } from "../../../../Errors/AppError";
+import { AppError } from "../../../../Shared/Errors/AppError";
 import { IUserRepository } from "../../Repositories/IUserRepository";
 
 interface IRequest{

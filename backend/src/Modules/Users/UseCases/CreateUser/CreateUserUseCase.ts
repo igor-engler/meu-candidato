@@ -1,6 +1,6 @@
 import { hash } from "bcrypt";
 
-import { AppError } from "../../../../Errors/AppError";
+import { AppError } from "../../../../Shared/Errors/AppError";
 import { IUserRepository } from "../../Repositories/IUserRepository";
 
 /**

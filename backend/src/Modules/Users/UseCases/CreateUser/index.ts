@@ -1,4 +1,4 @@
-import { UsersRepository } from "../../Repositories/implementations/UsersRepository";
+import { UsersRepository } from "../../Infra/Firebase/Repositories/UsersRepository";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 

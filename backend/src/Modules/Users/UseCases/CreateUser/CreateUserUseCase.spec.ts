@@ -1,4 +1,4 @@
-import { AppError } from "../../../../Errors/AppError";
+import { AppError } from "../../../../Shared/Errors/AppError";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { UserRepositoryInMemory } from "../../Repositories/in-memory/UserRepositoryInMemory";
 import { compare } from "bcrypt";

@@ -1,6 +1,6 @@
-import { User } from "../../Models/User";
-import { ICreateUserDTO, IUserRepository } from "../IUserRepository";
-import { db } from "../../../../db";
+import { User } from "../../../Models/User";
+import { ICreateUserDTO, IUserRepository } from "../../../Repositories/IUserRepository";
+import { db } from "../db.firebase";
 
 /**
  * Classe responsável por conter a implementação de todos os métodos do {@link IUserRepository}

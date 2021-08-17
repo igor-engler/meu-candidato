@@ -2,10 +2,10 @@ import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
-import swaggerFile from "./swagger.json";
+import swaggerFile from "../../swagger.json";
 import { router } from "./routes";
-import { config } from './config';
-import { AppError } from "./Errors/AppError";
+import { config } from '../../Config/config.firebase';
+import { AppError } from "../Errors/AppError";
 
 const app = express();
 
