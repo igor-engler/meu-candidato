@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 
-import { AppError } from "../../Errors/AppError";
-import { UsersRepository } from "../../../Modules/Users/Infra/Firebase/Repositories/UsersRepository";
+import { AppError } from "../Errors/AppError";
+import { UsersRepository } from "../Modules/Users/Repositories/implementations/UsersRepository";
 
 interface IPayload{
     sub: string;
