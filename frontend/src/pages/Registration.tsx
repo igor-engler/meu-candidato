@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { TouchableOpacity, StyleSheet, SafeAreaView, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-
 import Modal from 'react-native-modal'
 
 import { Button } from '../components/Button'
@@ -9,11 +8,10 @@ import { Button } from '../components/Button'
 import colors from "../styles/colors"
 import fonts from "../styles/fonts"
 
-export function UserIdentification() {
+export function Registration() {
 	const [isFocused, setIsFocused] = useState(false)
 	const [isFilled, setIsFilled] = useState(false)
 	const [name, setName] = useState<string>()
-	const [visible, setVisible] = useState(false)
 
 	function handleInputBlut() {
 		setIsFocused(false)
@@ -33,10 +31,17 @@ export function UserIdentification() {
 		navigation.navigate('FirstPage')
 	}
 
-	function handleRegistration() {
-		navigation.navigate('Registration')
-	}
+	const [visible, setVisible] = useState(false)
 
+	function callModal() {
+		<View>
+			<Modal isVisible={true}>
+				<View style={{ backgroundColor: 'white', height: 100 }}>
+					<Text>Conteúdo da modal</Text>
+				</View>
+			</Modal>
+		</View>
+	}
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -44,15 +49,26 @@ export function UserIdentification() {
 				<View style={styles.content}>
 					<View style={styles.form}>
 						<Text style={styles.title}>
-							Meu candidato {'\n'}
-							Deputados Federais {'\n'}
+							Cadastro de {'\n'}
+							usuário {'\n'}
 						</Text>
+
 						<TextInput
 							style={[
 								styles.input,
 								(isFocused || isFilled) && { borderColor: colors.green }
 							]}
-							placeholder="Digite seu E-mail"
+							placeholder="Nome"
+							onBlur={handleInputBlut}
+							onFocus={handleInputFocus}
+							onChangeText={handleInputChange}
+						/>
+						<TextInput
+							style={[
+								styles.input,
+								(isFocused || isFilled) && { borderColor: colors.green }
+							]}
+							placeholder="E-mail"
 							onBlur={handleInputBlut}
 							onFocus={handleInputFocus}
 							onChangeText={handleInputChange}
@@ -63,52 +79,27 @@ export function UserIdentification() {
 								styles.input,
 								(isFocused || isFilled) && { borderColor: colors.green }
 							]}
-							placeholder="Digite sua Senha"
+							placeholder="Senha"
 							onBlur={handleInputBlut}
 							onFocus={handleInputFocus}
 							onChangeText={handleInputChange}
 						/>
-						<View style={styles.footer}>
-							<Button
-								title="Login"
-								onPress={handleLogin}
-							/>
-						</View>
-						<TouchableOpacity onPress={() => { setVisible(true) }} >
-							<Text style={styles.colorful}>
-								Esqueceu a senha?
-							</Text>
-						</TouchableOpacity>
-						<Modal onBackdropPress={() => setVisible(false)} isVisible={visible}>
-							<View style={{ backgroundColor: 'white', height: 400 }}>
-								<Text style={styles.title}>
-									{'\n'}
-									Recuperar {'\n'}
-									senha {'\n'}
-								</Text>
-								<TextInput
-									style={[
-										styles.input,
-										(isFocused || isFilled) && { borderColor: colors.green }
-									]}
-									placeholder="Insira um e-mail associado à conta"
-									onBlur={handleInputBlut}
-									onFocus={handleInputFocus}
-									onChangeText={handleInputChange}
-								/>
-								<TextInput />
-								<View style={styles.footer}>
-									<Button
-										title="Recuperar senha"
-									/>
-								</View>
-							</View>
-						</Modal>
+						<TextInput
+							secureTextEntry={true}
+							style={[
+								styles.input,
+								(isFocused || isFilled) && { borderColor: colors.green }
+							]}
+							placeholder="Repita a senha"
+							onBlur={handleInputBlut}
+							onFocus={handleInputFocus}
+							onChangeText={handleInputChange}
+						/>
 
 						<View style={styles.footer} >
 							<Button
 								title="Cadastre-se"
-								onPress={handleRegistration}
+								onPress={callModal}
 							/>
 						</View>
 					</View>
@@ -163,9 +154,6 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.heading,
 		marginTop: 22,
 		fontSize: 18
-	},
-	modal: {
-		borderColor: colors.green
-	},
+	}
 
 })
