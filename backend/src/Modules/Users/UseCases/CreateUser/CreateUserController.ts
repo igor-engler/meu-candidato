@@ -27,7 +27,7 @@ class CreateUserController {
         try {
             await this.createUserUseCase.execute({ email, name, password });
         } catch (error) {
-            return response.status(500).json({ "Error": "Erro: Usuário já cadastrado" });
+            return response.status(500).json({ "Error": "Usuário já cadastrado" });
         }
 
         return response.status(201).json({ "Sucess": "Usuário cadastrado com sucesso" });
