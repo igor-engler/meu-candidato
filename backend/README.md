@@ -1,45 +1,51 @@
-# nodejs-boilerplate
+# nodejs-meu-candidato
 Clean Architecture for node.js projects
 
-## Folder Structure 
+## Estrutura do Projeto 
 
 ```
 src
-│   main.ts         # Application entry point
-└───api             # Express route controllers for all the endpoints of the app
-└───config          # Environment variables and configurations
-└───loaders         # Split the startup process into modules
-└───models          # Entities
-└───services        # All the business logic is here
-└───types           # Type declaration files (d.ts) for Typescript
+│   main.ts         # Ponto de entrada do Backend
+└───api             # Todas as rotas e middleware para todos os serviços
+└───config          # Variáveis de ambiente e configurações
+└───errors          # Módulo genérico responsável por receber os erros da aplicação
+└───framework       # Contem todos as interfaces de acesso aos métodos de cada framework usado no projeto
+└───loaders         # Divide a inicialização do backend em módulos
+└───models          # Entidades
+└───repositories    # Responsável por conter as operações do banco de dados de cada modelo
+└───services        # Todas as regras de negócios estão aqui
 
 ```
 
 
-## Getting Started
+## Começando
 
-### Step 1: Set up the Development Environment
+### Passo 1: Configurando seu ambiente de desenvolvimento
 
-You need to set up your development environment before you can do anything.
+Você precisa configurar seu ambiente de desenvolvimento antes de qualquer coisa.
 
-Install [Node.js and NPM](https://nodejs.org/en/download/)
+Baixe e Instale o [Node.js and NPM](https://nodejs.org/en/download/) OU
 
-- on OSX use [homebrew](http://brew.sh) `brew install node`
-- on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
+- no OSX use [homebrew](http://brew.sh) `brew install node`
+- no Windows [chocolatey](https://chocolatey.org/) `choco install nodejs`
+- no Linux `use seu gerenciador de pacotes e instale o nodejs`
 
-### Install
+### Instalar as dependências
 
-- Install all dependencies with `yarn install`
+- Instale todas as dependências com o comando `yarn install`
+- Se não possuir o [yarn](https://yarnpkg.com/) rode o seguinte comando:
+```
+    npm install -g yarn
+```
 
-### Running in dev mode
+### Executando em modo desenvolvimento
+ 
+- Execute o seguinte comando `yarn dev`
+- O endereço do servidor será exibido para você no terminal, e ficará disponível no endereço [localhost:8080](http://localhost:8080)
 
-- Run `yarn start` 
-- The server address will be displayed to you as `http://0.0.0.0:3000`
+### Buildando e executando
 
-### Building the project and run it
+- Execute o seguinte comando `yarn build` para converter todos os códigos de TypeScript do projeto para JavaScript.
+- O código do backend gerado ficará localizado na pasta `dist`.
 
-- Run `yarn build` to generated all JavaScript files from the TypeScript sources.
-- the builded app located in `dist`.
-
-
-Inspired by Bulletproof Node.js architecture with modificatins
+Inspirado no [nodejs-boilerplate project](https://github.com/satishbabariya/nodejs-boilerplate) e no [react-clean-architecture](https://github.com/eduardomoroni/react-clean-architecture).
