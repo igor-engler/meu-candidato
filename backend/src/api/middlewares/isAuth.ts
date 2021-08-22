@@ -17,7 +17,7 @@ export async function ensureAuthenticated(request: Request, response: Response, 
         const { sub: email } = Token.verify(token);
 
         const userRepositories = UserRepository.getInstance();
-        const user = userRepositories.findByEmail(email);
+        const user = userRepositories.findByEmail(email!);
 
         if(!user){
             throw new AppError("Usuário não cadastrado!", 401);

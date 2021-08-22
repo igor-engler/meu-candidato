@@ -27,7 +27,7 @@ class AuthenticateUser{
             throw new AppError("Usuário ou senha incorreta");
         }
 
-        const passwordMatch = await EncryptInfo.compare(password, user.password);
+        const passwordMatch = await EncryptInfo.compare(password, user.password!);
 
         if(!passwordMatch){
             throw new AppError("Usuário ou senha incorreta");
@@ -41,8 +41,8 @@ class AuthenticateUser{
         const tokenReturn: IResponse = {
             token,
             user: {
-                name: user.name,
-                email: user.email
+                name: user.name!,
+                email: user.email!
             }
         };
 

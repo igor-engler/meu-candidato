@@ -8,11 +8,11 @@ interface IPaylod{
 
 class Jsonwebtoken implements IJsonwebtoken{
     sing(payload: string | object | Buffer, options?: jsonwebtoken.SignOptions): string {
-        return jsonwebtoken.sign(payload, config.secretword, options);
+        return jsonwebtoken.sign(payload, config.secretword as jsonwebtoken.Secret, options);
     }
 
     verify(token: string): jsonwebtoken.JwtPayload{
-        return jsonwebtoken.verify(token, config.secretword) as IPaylod;
+        return jsonwebtoken.verify(token, config.secretword as jsonwebtoken.Secret) as IPaylod;
     }
 
 }

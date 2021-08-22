@@ -29,7 +29,7 @@ class FirebaseFramework implements IFirebase{
         ref_collection.doc().set(data)
     }
 
-    async findData(collection: string, filter: string, param: string | number): Promise<Object>{
+    async findData(collection: string, filter: string, param: string | number): Promise<Object | undefined >{
         const ref_collection = this.firestoreCollection(collection);
         const document = await ref_collection.where(filter, '==', param).get();
 

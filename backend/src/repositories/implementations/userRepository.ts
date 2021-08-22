@@ -1,6 +1,6 @@
 import { User } from "../../models/user";
-import { ICreateUserDTO, IUserRepository } from "../interfaces/IUserRepository";
 import { Database } from "../../frameworks/firebase/Ifirebase";
+import { ICreateUserDTO, IUserRepository } from "../interfaces/IUserRepository";
 
 
 class UserRepository implements IUserRepository{
@@ -31,7 +31,7 @@ class UserRepository implements IUserRepository{
         
     };
 
-    async findByEmail(email: string): Promise<User> {
+    async findByEmail(email: string): Promise<User | undefined>{
         const userFound = await UserRepository.database.findData('users', 'email', email);
 
         if(!userFound){
