@@ -14,6 +14,10 @@ src
 └───models          # Entidades
 └───repositories    # Responsável por conter as operações do banco de dados de cada modelo
 └───services        # Todas as regras de negócios estão aqui
+tests
+|
+└───repositories    # Versão em memória dos repositórios. (utilizado somente nos testes)
+└───services        # Contem todos os testes das regras de negocios
 
 ```
 
@@ -43,7 +47,12 @@ Baixe e Instale o [Node.js and NPM](https://nodejs.org/en/download/) OU
 - Execute o seguinte comando `yarn dev`
 - O endereço do servidor será exibido para você no terminal, e ficará disponível no endereço [localhost:8080](http://localhost:8080)
 
-### Buildando e executando
+### Executando os testes
+
+- Execute o seguinte comando `yarn test`
+- Se tudo tiver sido configurado corretamente, os testes deverão ser executados e todos deverão passar.
+
+### Buildando e executando o backend
 
 - Execute o seguinte comando `yarn build` para converter todos os códigos de TypeScript do projeto para JavaScript.
 - O código do backend gerado ficará localizado na pasta `dist`.
