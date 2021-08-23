@@ -1,5 +1,4 @@
-# nodejs-meu-candidato
-Clean Architecture for node.js projects
+# `backend-meu-candidato`
 
 ## Estrutura do Projeto 
 
@@ -9,7 +8,7 @@ src
 └───api             # Todas as rotas e middleware para todos os serviços
 └───config          # Variáveis de ambiente e configurações
 └───errors          # Módulo genérico responsável por receber os erros da aplicação
-└───framework       # Contem todos as interfaces de acesso aos métodos de cada framework usado no projeto
+└───framework       # Contem todas as interfaces de acesso aos métodos de cada framework usado no projeto
 └───loaders         # Divide a inicialização do backend em módulos
 └───models          # Entidades
 └───repositories    # Responsável por conter as operações do banco de dados de cada modelo
@@ -21,10 +20,15 @@ tests
 
 ```
 
+## Diagrama da Arquitetura
+
+![communication-flow-diagram](https://github.com/Kyhaiu/meu-candidato/tree/master/backend/docs/images/Diagrama.png)
+
 
 ## Começando
 
 ### Passo 1: Configurando seu ambiente de desenvolvimento
+
 
 Você precisa configurar seu ambiente de desenvolvimento antes de qualquer coisa.
 
@@ -34,7 +38,8 @@ Baixe e Instale o [Node.js and NPM](https://nodejs.org/en/download/) OU
 - no Windows [chocolatey](https://chocolatey.org/) `choco install nodejs`
 - no Linux `use seu gerenciador de pacotes e instale o nodejs`
 
-### Instalar as dependências
+### Passo 2: Instalar as dependências
+
 
 - Instale todas as dependências com o comando `yarn install`
 - Se não possuir o [yarn](https://yarnpkg.com/) rode o seguinte comando:
@@ -42,15 +47,17 @@ Baixe e Instale o [Node.js and NPM](https://nodejs.org/en/download/) OU
     npm install -g yarn
 ```
 
-### Executando em modo desenvolvimento
- 
-- Execute o seguinte comando `yarn dev`
-- O endereço do servidor será exibido para você no terminal, e ficará disponível no endereço [localhost:8080](http://localhost:8080)
+### Passo 3: Executando os testes
 
-### Executando os testes
 
 - Execute o seguinte comando `yarn test`
 - Se tudo tiver sido configurado corretamente, os testes deverão ser executados e todos deverão passar.
+
+
+### Passo 4: Executando em modo desenvolvimento
+ 
+- Execute o seguinte comando `yarn dev`
+- O endereço do servidor será exibido para você no terminal, e ficará disponível no endereço [localhost:8080](http://localhost:8080)
 
 ### Buildando e executando o backend
 
