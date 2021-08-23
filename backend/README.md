@@ -22,7 +22,7 @@ tests
 
 ## Diagrama da Arquitetura
 
-![communication-flow-diagram](https://github.com/Kyhaiu/meu-candidato/tree/master/backend/docs/images/Diagrama.png)
+![communication-flow-diagram](https://github.com/Kyhaiu/meu-candidato/tree/master/backend/docs/images/Diagrama.jpg)
 
 
 ## Começando
