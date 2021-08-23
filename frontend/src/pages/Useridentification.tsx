@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { TouchableOpacity, StyleSheet, SafeAreaView, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import auth from "../services/api";
 
 import Modal from 'react-native-modal'
 
@@ -29,8 +30,20 @@ export function UserIdentification() {
 
 	const navigation = useNavigation()
 
-	function handleLogin() {
-		navigation.navigate('FirstPage')
+	async function handleLogin() {
+		//navigation.navigate('FirstPage')
+
+		const user = {
+			"email": "igão@teste.com.br",
+			"password" : "12345" 
+		}
+
+		try{
+			const response = await auth(user, 'sessions', 'post')
+			console.log(response);
+		} catch(err){
+			console.log(err);
+		}
 	}
 
 	function handleRegistration() {
