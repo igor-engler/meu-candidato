@@ -30,4 +30,14 @@ const config = {
     secretword: SECRETWORD,
 }
 
-export default config;
+const transport = {
+  host: "smtp.mailtrap.io",
+  port: 2525,
+  secure: false,
+  auth: {
+    user: "6a66a30f360c76",
+    pass: "908585078594e3"
+  }
+};
+
+export { config, transport };

@@ -1,6 +1,6 @@
 import * as jsonwebtoken from "jsonwebtoken";
 import { IJsonwebtoken } from "./Ijsonwebtoken";
-import config from "../../config";
+import { config } from "../../config";
 
 interface IPaylod{
     sub: string,

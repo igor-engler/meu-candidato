@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import { RecoverUser } from "./recoverUser";
+import { RecoverPassword } from "./recoverPassword";
 
-class RecoverUserController{
-    constructor(private recoverUserService: RecoverUser){}
+class RecoverPasswordController{
+    constructor(private recoverPasswordService: RecoverPassword){}
 
     async handle(request: Request, response: Response): Promise<Response>{
 
         const { email } = request.body;
         
         try{
-            const token = await this.recoverUserService.execute({email});
+            const token = await this.recoverPasswordService.execute({email});
             return response.status(201).json(token);
         } catch(error: any){
             return response.status(error.code).json({ "Error": error.message });
@@ -17,4 +17,4 @@ class RecoverUserController{
     };
 };
 
-export { RecoverUserController };
+export { RecoverPasswordController };
