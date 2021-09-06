@@ -1,7 +1,17 @@
 import React, { useState } from "react"
-import { TouchableOpacity, StyleSheet, SafeAreaView, Text, View, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
+import { 
+	TouchableOpacity,
+	StyleSheet,
+	SafeAreaView,
+	Text,
+	View,
+	TextInput,
+	KeyboardAvoidingView,
+	Platform,
+	Alert 
+} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import auth from "../services/api";
+import { auth } from "../services/api";
 
 import Modal from 'react-native-modal'
 
@@ -13,19 +23,26 @@ import fonts from "../styles/fonts"
 export function UserIdentification() {
 	const [isFocused, setIsFocused] = useState(false)
 	const [isFilled, setIsFilled] = useState(false)
-	const [name, setName] = useState<string>()
+	const [email, setEmail] = useState<string>()
+	const [password, setPassword] = useState<string>()
 	const [visible, setVisible] = useState(false)
 
 	function handleInputBlut() {
 		setIsFocused(false)
-		setIsFilled(!!name)
+		setIsFilled(!!email)
 	}
 	function handleInputFocus() {
 		setIsFocused(true)
 	}
-	function handleInputChange(value: string) {
+
+	function handleEmailInputChange(value: string){
 		setIsFilled(!!value)
-		setName(value)
+		setEmail(value)
+	}
+
+	function handlePasswordInputChange(value: string){
+		setIsFilled(!!value)
+		setPassword(value)
 	}
 
 	const navigation = useNavigation()
@@ -34,16 +51,26 @@ export function UserIdentification() {
 		//navigation.navigate('FirstPage')
 
 		const user = {
-			"email": "igão@teste.com.br",
-			"password" : "12345" 
+			"email": email,
+			"password" : password 
 		}
 
-		try{
-			const response = await auth(user, 'sessions', 'post')
-			console.log(response);
-		} catch(err){
-			console.log(err);
+		const response: any = await auth(user, 'sessions', 'post')
+		
+		const data = response[0]
+		const code = response[1]
+
+		if(code === 400){
+			Alert.alert('Erro!', data.Error)
 		}
+
+		console.log(data, code)
+
+		if (code === 201){
+			// Vai pra proxima pagina
+			Alert.alert('Usuário logado com sucesso!')
+		}
+
 	}
 
 	function handleRegistration() {
@@ -68,7 +95,7 @@ export function UserIdentification() {
 							placeholder="Digite seu E-mail"
 							onBlur={handleInputBlut}
 							onFocus={handleInputFocus}
-							onChangeText={handleInputChange}
+							onChangeText={handleEmailInputChange}
 						/>
 						<TextInput
 							secureTextEntry={true}
@@ -79,7 +106,7 @@ export function UserIdentification() {
 							placeholder="Digite sua Senha"
 							onBlur={handleInputBlut}
 							onFocus={handleInputFocus}
-							onChangeText={handleInputChange}
+							onChangeText={handlePasswordInputChange}
 						/>
 						<View style={styles.footer}>
 							<Button
@@ -107,7 +134,7 @@ export function UserIdentification() {
 									placeholder="Insira um e-mail associado à conta"
 									onBlur={handleInputBlut}
 									onFocus={handleInputFocus}
-									onChangeText={handleInputChange}
+									onChangeText={handleEmailInputChange}
 								/>
 								<TextInput />
 								<View style={styles.footer}>

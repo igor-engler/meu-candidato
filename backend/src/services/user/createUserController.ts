@@ -10,7 +10,7 @@ class CreateUserController{
         
         try{
             await this.createUserService.execute({ email, name, password });
-        } catch(error){
+        } catch(error: any){
             return response.status(error.code).json({ "Error": error.message });
         }
 

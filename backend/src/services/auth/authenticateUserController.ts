@@ -11,7 +11,7 @@ class AuthenticateUserController{
         try{
             const token = await this.authenticateUserService.execute({email, password});
             return response.status(201).json(token);
-        } catch(error){
+        } catch(error: any){
             return response.status(error.code).json({ "Error": error.message });
         }
     };
