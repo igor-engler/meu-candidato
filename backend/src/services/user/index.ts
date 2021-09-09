@@ -3,8 +3,8 @@ import { CreateUserController } from "./createUserController";
 import { CreateUser } from "./createUsers";
 
 export default (): CreateUserController => {
-    const userRepository = UserRepository.getInstance()
-    const createUserService = new CreateUser(userRepository);
-    const createUserController = new CreateUserController(createUserService);
-    return createUserController;
+  const userRepository = UserRepository.getInstance()
+  const createUserService = new CreateUser(userRepository);
+  const createUserController = new CreateUserController(createUserService);
+  return createUserController;
 }

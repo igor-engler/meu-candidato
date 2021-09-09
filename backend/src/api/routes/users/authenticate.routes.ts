@@ -11,7 +11,7 @@ const AuthenticateRoutes = Router();
  *  - POST
  */
 AuthenticateRoutes.post('/', (request, response) => {
-    return authenticateUserController().handle(request, response);
+  return authenticateUserController().handle(request, response);
 });
 
 export { AuthenticateRoutes };

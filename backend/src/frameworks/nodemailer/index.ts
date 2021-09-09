@@ -6,33 +6,33 @@ import { transport } from '../../config';
 import { INodemailer } from "./Inodemailer";
 
 
-class Nodemailer implements INodemailer{
+class Nodemailer implements INodemailer {
 
-    private static INSTANCE: any;
+  private static INSTANCE: any;
 
-    private nodemailer(){
-        return nodemailer.createTransport(transport as SMTPConnection.Options);
+  private nodemailer() {
+    return nodemailer.createTransport(transport as SMTPConnection.Options);
+  }
+
+  public static getInstance(): nodemailer.Transporter<SMTPTransport.SentMessageInfo> {
+    if (!Nodemailer.INSTANCE) {
+      Nodemailer.INSTANCE = new Nodemailer().nodemailer();
     }
 
-    public static getInstance(): nodemailer.Transporter<SMTPTransport.SentMessageInfo>{
-        if(!Nodemailer.INSTANCE){
-            Nodemailer.INSTANCE = new Nodemailer().nodemailer();
-        }
+    return Nodemailer.INSTANCE as nodemailer.Transporter<SMTPTransport.SentMessageInfo>;
+  }
 
-        return Nodemailer.INSTANCE as nodemailer.Transporter<SMTPTransport.SentMessageInfo>;
-    }
+  async sendEmail(emailContent: string, subject: string, from: string, to: string): Promise<void> {
+    const mail = {
+      from,
+      to,
+      subject,
+      text: emailContent,
+      html: `<h1>${subject}</h1>`
+    };
 
-    async sendEmail(emailContent: string, subject: string, from: string, to: string): Promise<void>{
-        const mail = {
-            from,
-            to,
-            subject,
-            text: emailContent,
-            html: `<h1>${subject}</h1>`
-        };
-
-        await Nodemailer.getInstance().sendMail(mail);
-    }
+    await Nodemailer.getInstance().sendMail(mail);
+  }
 };
 
 export default new Nodemailer();

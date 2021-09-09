@@ -1,6 +1,6 @@
 import { AppError } from "../../src/errors/appError";
 import { CreateUser } from "../../src/services/user/createUsers";
-import { UserRepositoryInMemory, ICreateUserDTO} from "../repositories/userRepositoryInMemory";
+import { UserRepositoryInMemory, ICreateUserDTO } from "../repositories/userRepositoryInMemory";
 import { EncryptInfo } from "../../src/frameworks/bcrypt/Ibcrypt";
 
 
@@ -10,49 +10,51 @@ let user: ICreateUserDTO;
 
 describe("Create User", () => {
 
-    beforeAll(() => {
-        userRepositoryInMemory = new UserRepositoryInMemory();
-        createUser = new CreateUser(userRepositoryInMemory);
-        user = {
-            email: "teste@teste.com.br",
-            name: "teste teste",
-            password: "123456789",
-        };
+  beforeAll(() => {
+    userRepositoryInMemory = new UserRepositoryInMemory();
+    createUser = new CreateUser(userRepositoryInMemory);
+    user = {
+      email: "teste@teste.com.br",
+      name: "teste teste",
+      password: "123456789",
+    };
+  });
+
+  it("Should be able to create a new User", async () => {
+
+    await createUser.execute({
+      email: user.email,
+      name: user.name,
+      password: user.password
     });
 
-    it("Should be able to create a new User", async () => {
+    const userCreated = await userRepositoryInMemory.findByEmail(user.email);
 
-        await createUser.execute({
-            email: user.email,
-            name: user.name,
-            password: user.password
-        });
+    expect(userCreated).not.toBeUndefined();
+  });
 
-        const userCreated = await userRepositoryInMemory.findByEmail(user.email);
+  it("Should be not able to create a new User with exits email", async () => {
+    expect(async () => {
+      await createUser.execute({
+        email: user.email,
+        name: user.name,
+        password: user.password
+      });
+    }).rejects.toBeInstanceOf(AppError);
+  });
 
-        expect(userCreated).not.toBeUndefined();
-    });
+  it("Should password be encrypted", async () => {
+    const userCreated = await userRepositoryInMemory.findByEmail(user.email);
 
-    it("Should be not able to create a new User with exits email", async () => {
-        expect(async () =>{
-            await createUser.execute({
-                email: user.email,
-                name: user.name,
-                password: user.password
-            });
-        }).rejects.toBeInstanceOf(AppError);
-    });
+    expect(userCreated).not.toEqual(user.password);
+  });
 
-    it("Should password be encrypted", async () => {
-        const userCreated = await userRepositoryInMemory.findByEmail(user.email);
+  it("Should be unencrypted password must match the encrypted one", async () => {
+    const userCreated = await userRepositoryInMemory.findByEmail(user.email);
+    const passwordMatch = await EncryptInfo.compare(user.password, userCreated!.password!);
 
-        expect(userCreated).not.toEqual(user.password);
-    });
+    console.log(user.password, userCreated?.password)
 
-    it("Should be unencrypted password must match the encrypted one", async () => {
-        const userCreated = await userRepositoryInMemory.findByEmail(user.email);
-        const passwordMatch = await EncryptInfo.compare(user.password, userCreated!.password!);
-
-        expect(passwordMatch).toBeTruthy();
-    });
+    expect(passwordMatch).toBeTruthy();
+  });
 });

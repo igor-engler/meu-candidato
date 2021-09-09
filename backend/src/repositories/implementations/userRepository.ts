@@ -1,48 +1,50 @@
 import { User } from "../../models/user";
 import { Database } from "../../frameworks/firebase/Ifirebase";
 import { ICreateUserDTO, IUserRepository } from "../interfaces/IUserRepository";
+import { EncryptInfo } from "../../frameworks/bcrypt/Ibcrypt";
 
 
-class UserRepository implements IUserRepository{
-    
-    private static INSTANCE: UserRepository;
-    private static database: Database;
-    
-    public static getInstance(): UserRepository{
-        if(!UserRepository.INSTANCE){
-            UserRepository.INSTANCE = new UserRepository();
-            UserRepository.database = new Database();
-        }
+class UserRepository implements IUserRepository {
 
-        return UserRepository.INSTANCE;
+  private static INSTANCE: UserRepository;
+  private static database: Database;
+
+  public static getInstance(): UserRepository {
+    if (!UserRepository.INSTANCE) {
+      UserRepository.INSTANCE = new UserRepository();
+      UserRepository.database = new Database();
     }
 
-    create({ email, name, password }: ICreateUserDTO): void {
-        const user = new User();
+    return UserRepository.INSTANCE;
+  }
 
-        Object.assign(user, {
-            email,
-            name,
-            password,
-            list_favorites: []
-        });
+  async create({ email, name, password }: ICreateUserDTO): Promise<void> {
+    const user = new User();
+    const passwordEncrypted = await EncryptInfo.hash(password, 8);
 
-        UserRepository.database.storeData('users', user);
-        
-    };
+    Object.assign(user, {
+      email,
+      name,
+      password: passwordEncrypted,
+      list_favorites: []
+    });
 
-    async findByEmail(email: string): Promise<User | undefined>{
-        const userFound = await UserRepository.database.findData('users', 'email', email);
+    UserRepository.database.storeData('users', user);
 
-        if(!userFound){
-            return undefined;
-        }
-        
-        const user = new User();
-        Object.assign(user, userFound);
+  };
 
-        return user;
+  async findByEmail(email: string): Promise<User | undefined> {
+    const userFound = await UserRepository.database.findData('users', 'email', email);
+
+    if (!userFound) {
+      return undefined;
     }
+
+    const user = new User();
+    Object.assign(user, userFound);
+
+    return user;
+  }
 
 };
 

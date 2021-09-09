@@ -11,7 +11,7 @@ const UserRoutes = Router();
  *  - POST
  */
 UserRoutes.post('/', (request, response) => {
-    return createUserController().handle(request, response);
+  return createUserController().handle(request, response);
 });
 
 export { UserRoutes };

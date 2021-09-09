@@ -1,27 +1,29 @@
 import { User } from "../../src/models/user";
+import { EncryptInfo } from "../../src/frameworks/bcrypt/Ibcrypt";
 import { ICreateUserDTO, IUserRepository } from "../../src/repositories/interfaces/IUserRepository";
 
-class UserRepositoryInMemory implements IUserRepository{
-    
-    users: User[] = [];
+class UserRepositoryInMemory implements IUserRepository {
 
-    create({ email, name, password }: ICreateUserDTO): void {
-        const user = new User();
+  users: User[] = [];
 
-        Object.assign(user, {
-            email,
-            name,
-            password
-        });
+  async create({ email, name, password }: ICreateUserDTO): Promise<void> {
+    const user = new User();
 
-        this.users.push(user);
-    }
-    async findByEmail(email: string): Promise<User| undefined> {
-        const user = this.users.find(user => user.email === email);
-        return user;
-    }
+    const passwordEncrypted = await EncryptInfo.hash(password, 8);
 
+    Object.assign(user, {
+      email,
+      name,
+      password: passwordEncrypted
+    });
 
+    this.users.push(user);
+  }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    const user = this.users.find(user => user.email === email);
+    return user;
+  }
 };
 
 export { UserRepositoryInMemory, ICreateUserDTO };

@@ -11,7 +11,7 @@ const ResetPasswordRoutes = Router();
  *  - POST
  */
 ResetPasswordRoutes.get('/', (request, response) => {
-    return recoverPasswordController().handle(request, response);
+  return recoverPasswordController().handle(request, response);
 });
 
 export { ResetPasswordRoutes };
