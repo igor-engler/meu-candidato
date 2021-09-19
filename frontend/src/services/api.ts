@@ -26,4 +26,20 @@ async function createUser(data: Object, route: string, method: string) {
     }
 }
 
-export { auth, createUser };
+async function fetchDeputado(){
+  const { data } = await axios.get('https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome')
+  
+  const deputados: {id: string, nome: string, foto: string}[] = [];
+
+  data.dados.forEach((element: any) => {
+    deputados.push({
+      id: element.id,
+      nome: element.nome,
+      foto: element.urlFoto,
+    })
+  });
+
+  return deputados;
+}
+
+export { auth, createUser, fetchDeputado};

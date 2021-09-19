@@ -67,16 +67,17 @@ export function UserIdentification() {
 		console.log(data, code)
 
 		if (code === 201){
-			// Vai pra proxima pagina
-			Alert.alert('Usuário logado com sucesso!')
+			navigation.navigate("FirstPage",
+        {
+          email: email
+        }
+      )
 		}
-
 	}
 
 	function handleRegistration() {
 		navigation.navigate('Registration')
 	}
-
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -207,5 +208,4 @@ const styles = StyleSheet.create({
 	modal: {
 		borderColor: colors.green
 	},
-
 })
