@@ -18,13 +18,13 @@ interface EstadosProps {
   title: string;
 }
 
-export function FirstPage() { 
+export function FirstPage() {
   const [estados, setEstados] = useState<EstadosProps[]>([]);
   const [deputados, setDeputados] = useState<DeputadosProps[]>([]);
   const [filteredDeputados, setFilteredDeputados] = useState<DeputadosProps[]>([]);
   const [estadoSelected, setEstadoSelected] = useState('all');
   const [loading, setLoading] = useState(true);
-  
+
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
 
@@ -37,13 +37,13 @@ export function FirstPage() {
       return setFilteredDeputados(deputados);
 
     const filtered: {
-        id: string, 
-        nome: string, 
-        foto: string,
-        estados: [string]
-      }[] = [];
+      id: string,
+      nome: string,
+      foto: string,
+      estados: [string]
+    }[] = [];
     deputados.forEach((element) => {
-      if(`${element.estados}` === estado){
+      if (`${element.estados}` === estado) {
         filtered.push(element)
       }
     })
@@ -55,25 +55,25 @@ export function FirstPage() {
 
   async function fetchData() {
     const { data } = await api
-    .get('deputados?ordem=ASC&ordenarPor=nome');
+      .get('deputados?ordem=ASC&ordenarPor=nome');
 
     const deputeis: {
-        id: string, 
-        nome: string, 
-        foto: string,
-        estados: [string]
-      }[] = [];
-      data.dados.forEach((element: any) => {
-        deputeis.push({
-          id: element.id,
-          nome: element.nome,
-          foto: element.urlFoto,
-          estados: element.siglaUf
-        })
-      });
+      id: string,
+      nome: string,
+      foto: string,
+      estados: [string]
+    }[] = [];
+    data.dados.forEach((element: any) => {
+      deputeis.push({
+        id: element.id,
+        nome: element.nome,
+        foto: element.urlFoto,
+        estados: element.siglaUf
+      })
+    });
 
-    if(!data)
-    return setLoading(true);
+    if (!data)
+      return setLoading(true);
 
     if (page > 1) {
       setDeputados(oldValue => [...oldValue, ...deputeis])
@@ -103,13 +103,13 @@ export function FirstPage() {
   useEffect(() => {
     async function fetch() {
       const { data } = await api
-      .get('deputados?ordem=ASC&ordenarPor=nome');
+        .get('deputados?ordem=ASC&ordenarPor=nome');
 
       setEstados(states);
 
       const deputeis: {
-        id: string, 
-        nome: string, 
+        id: string,
+        nome: string,
         foto: string,
         estados: [string]
       }[] = [];
@@ -148,7 +148,7 @@ export function FirstPage() {
           data={estados}
           keyExtractor={(item) => String(item.key)}
           renderItem={({ item }) => (
-            <EstadosButton 
+            <EstadosButton
               title={item.key}
               active={item.key === estadoSelected}
               onPress={() => handleEstadoSelected(item.key)}
@@ -163,7 +163,7 @@ export function FirstPage() {
       </View>
 
       <View style={styles.deputados}>
-        <FlatList 
+        <FlatList
           data={filteredDeputados}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   subtitle: {
+    marginTop: 50,
     fontFamily: fonts.text,
     fontSize: 17,
     lineHeight: 20,
