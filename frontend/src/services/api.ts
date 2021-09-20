@@ -42,4 +42,8 @@ async function fetchDeputado(){
   return deputados;
 }
 
-export { auth, createUser, fetchDeputado};
+const api = axios.create({
+  baseURL: 'https://dadosabertos.camara.leg.br/api/v2'
+})
+
+export { auth, createUser, fetchDeputado, api};

@@ -15,10 +15,19 @@ export function DeputadosCardPrimary({ data, ...rest }: DeputadosCardPrimary) {
   return (
     <RectButton
       style={styles.container}
+      onPress={() => console.log(data.foto)}
       {...rest}
-      onPress={() => console.log(data)}
     >
-      <Image source={ { uri: data.foto} } width={70} height={70} />
+      <Image 
+        source={
+          {
+            uri: data.foto,
+            width: 80,
+            height: 80
+          }
+        }
+        resizeMode={'cover'}
+      />
       <Text style={styles.text}>
         { data.nome }
       </Text>
@@ -29,7 +38,6 @@ export function DeputadosCardPrimary({ data, ...rest }: DeputadosCardPrimary) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    maxWidth: '45%',
     backgroundColor: colors.shape,
     borderRadius: 20,
     paddingVertical: 10,
